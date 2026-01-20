@@ -10,8 +10,10 @@ import { useFonts } from "expo-font";
 import { Stack, useRouter, useSegments } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useMemo } from "react";
-import { useColorScheme } from "react-native"; // Solución nativa
+import { useColorScheme } from "react-native";
 import "react-native-reanimated";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import "../src/theme/global.css";
 
 import { supabase } from "@/api/supabase";
 import { useAuthStore } from "@/core/authStore";
@@ -25,7 +27,6 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  // Ruta de fuentes actualizada según tu estructura en src/assets
   const [loaded, error] = useFonts({
     SpaceMono: require("../src/assets/fonts/SpaceMono-Regular.ttf"),
     ...FontAwesome.font,
@@ -43,7 +44,11 @@ export default function RootLayout() {
 
   if (!loaded) return null;
 
-  return <RootLayoutNav />;
+  return (
+    <SafeAreaProvider>
+      <RootLayoutNav />
+    </SafeAreaProvider>
+  );
 }
 
 function RootLayoutNav() {
@@ -55,21 +60,17 @@ function RootLayoutNav() {
   const queryClient = useMemo(() => new QueryClient(), []);
 
   useEffect(() => {
-    // Sincronización proactiva de la sesión
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
   }, []);
 
   useEffect(() => {
-    // Middleware de protección de rutas
     const inAuthGroup = segments[0] === "(auth)";
 
     if (!session && !inAuthGroup) {
-      // Forzar login si no hay sesión
-      router.replace("/login");
+      router.replace("/(auth)/login");
     } else if (session && inAuthGroup) {
-      // Redirigir al Dashboard si ya está autenticado
       router.replace("/(tabs)");
     }
   }, [session, segments]);
@@ -78,7 +79,6 @@ function RootLayoutNav() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <Stack screenOptions={{ headerShown: false }}>
-          {/* Se definen los grupos. Requiere app/(auth)/_layout.tsx para evitar avisos */}
           <Stack.Screen name="(auth)" options={{ animation: "fade" }} />
           <Stack.Screen name="(tabs)" options={{ animation: "fade" }} />
           <Stack.Screen name="modal" options={{ presentation: "modal" }} />

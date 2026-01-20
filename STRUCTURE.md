@@ -13,6 +13,7 @@ D:\PROYECTO\SMARTFINANCE360-PROJECT\SMARTFINANCE360\APP
 |       forgot-password.tsx
 |       login.tsx
 |       register.tsx
+|       _layout.tsx
 |
 \---(tabs)
         index.tsx
@@ -72,6 +73,8 @@ D:\PROYECTO\SMARTFINANCE360-PROJECT\SMARTFINANCE360\SRC
 |       \---utils
 +---hooks
 +---theme
+|       global.css
+|
 +---types
 |       database.ts
 |

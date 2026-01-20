@@ -5,16 +5,13 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%; /* #F8FAFC */
-    --primary: 160 84% 39%; /* #10B981 */
-    --secondary: 222 47% 11%; /* #0F172A */
+    --background: 0 0% 100%; /* Blanco puro */
+    --primary: 160 84% 39%; /* Emerald #10B981 */
+    --secondary: 222 47% 11%; /* Slate #0F172A */
   }
 }
 
-/* Efecto de transición suave para inputs */
-.input-focus-effect {
-  @apply transition-all duration-300 border-slate-200;
-}
-.input-focus-effect:focus {
-  @apply border-primary ring-2 ring-primary/20 shadow-lg;
+/* Forzamos fondo blanco global para evitar pantallas negras */
+body {
+  @apply bg-white;
 }
