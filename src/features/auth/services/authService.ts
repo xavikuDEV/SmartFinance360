@@ -25,12 +25,30 @@ export const authService = {
       email,
       password,
       options: {
-        // Vinculación automática con la tabla profiles vía triggers o metadata
+        // Los datos pasan a la tabla profiles vía triggers de Supabase
         data: { full_name: fullName },
       },
     });
     if (error) throw error;
     return data;
+  },
+
+  async signInWithGoogle() {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "smartfinance360://dashboard",
+      },
+    });
+    if (error) throw error;
+    return data;
+  },
+
+  async resetPassword(email: string) {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: "smartfinance360://reset-password",
+    });
+    if (error) throw error;
   },
 
   async signOut() {
