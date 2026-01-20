@@ -102,13 +102,12 @@ export default function LoginScreen() {
           </TouchableOpacity>
 
           <View className="flex-row justify-between mt-6 px-2">
-            {/* Forzamos el tipo para evitar el error del compilador de rutas */}
-            <Link href={"/register" as any} asChild>
+            <Link href="/register" asChild>
               <TouchableOpacity>
                 <Text className="text-[#475569] font-medium">Crear cuenta</Text>
               </TouchableOpacity>
             </Link>
-            <Link href={"/forgot-password" as any} asChild>
+            <Link href="/forgot-password" asChild>
               <TouchableOpacity>
                 <Text className="text-[#10B981] font-medium">
                   ¿Olvidaste la clave?
