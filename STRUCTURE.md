@@ -25,8 +25,32 @@ D:\PROYECTO\SMARTFINANCE360-PROJECT\SMARTFINANCE360\SRC
 +---api
 |       supabase.ts
 |
++---assets
+|   +---fonts
+|   |       SpaceMono-Regular.ttf
+|   |
+|   \---images
+|           adaptive-icon.png
+|           favicon.png
+|           icon.png
+|           splash-icon.png
+|
 +---components
-|   \---ui
+|   |   EditScreenInfo.tsx
+|   |   ExternalLink.tsx
+|   |   StyledText.tsx
+|   |   Themed.tsx
+|   |   useClientOnlyValue.ts
+|   |   useClientOnlyValue.web.ts
+|   |   useColorScheme.ts
+|   |   useColorScheme.web.ts
+|   |
+|   \---__tests__
+|           StyledText-test.js
+|
++---constants
+|       Colors.ts
+|
 +---core
 |   |   authStore.ts
 |   |
