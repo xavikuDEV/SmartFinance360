@@ -10,7 +10,9 @@ D:\PROYECTO\SMARTFINANCE360-PROJECT\SMARTFINANCE360\APP
 |   _layout.tsx
 |
 +---(auth)
+|       forgot-password.tsx
 |       login.tsx
+|       register.tsx
 |
 \---(tabs)
         index.tsx
@@ -26,10 +28,16 @@ D:\PROYECTO\SMARTFINANCE360-PROJECT\SMARTFINANCE360\SRC
 +---components
 |   \---ui
 +---core
-|       authStore.ts
+|   |   authStore.ts
+|   |
+|   \---__tests__
+|           authStore.test.ts
 |
 +---features
 |   +---ai
+|   |   \---services
+|   |           geminiService.ts
+|   |
 |   +---auth
 |   |   +---components
 |   |   +---hooks
