@@ -39,3 +39,7 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# SmartFinance360 Secrets
+.env
+.env.local
